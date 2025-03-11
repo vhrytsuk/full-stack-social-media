@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "accounts",
     "social_accounts",
+    "password_reset",
 ]
 
 MIDDLEWARE = [
