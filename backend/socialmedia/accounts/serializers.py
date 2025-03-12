@@ -1,15 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import smart_str, smart_bytes, force_str
 from rest_framework.exceptions import AuthenticationFailed
-from django.contrib.sites.shortcuts import get_current_site
-from django.urls import reverse
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 from .models import User
-from .utils import send_normal_email
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):

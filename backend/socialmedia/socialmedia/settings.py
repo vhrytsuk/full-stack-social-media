@@ -156,10 +156,15 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
-
+# Configuration for mailtrap , SMTP server
 EMAIL_HOST = "sandbox.smtp.mailtrap.io"
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_FROM_EMAIL = "info@django.com"
 EMAIL_PORT = "2525"
 EMAIL_USE_TLS = True
+
+
+# Google OAuth2
+GOOGLE_CLIENT_ID = env("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = env("GOOGLE_CLIENT_SECRET")
