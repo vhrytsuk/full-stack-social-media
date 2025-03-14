@@ -156,6 +156,8 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://http://localhost:5173"]
+
 # Configuration for mailtrap , SMTP server
 EMAIL_HOST = "sandbox.smtp.mailtrap.io"
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
