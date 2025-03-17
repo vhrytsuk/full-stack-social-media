@@ -1,0 +1,17 @@
+
+build
+dist
+node_modules
+
+*.log
+
+.env
+.env.local
+.env.*.local
+
+.vscode/
+.idea/
+.DS_Store
+
+*.min.js
+*.min.css
