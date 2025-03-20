@@ -1,13 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/')({
-	component: Index,
-});
+import Home from '@/components/pages/Home';
+import NotFound from '@/components/pages/NotFound';
+import { Paths } from '@/constants/paths';
 
-function Index() {
-	return (
-		<div className="p-2">
-			<h3>Welcome Home!</h3>
-		</div>
-	);
-}
+export const Route = createFileRoute(Paths.HOME)({
+	component: Home,
+	notFoundComponent: NotFound,
+});
