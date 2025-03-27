@@ -51,7 +51,10 @@ class VerifyUserEmail(GenericAPIView):
                 user_code_obj.delete()
 
                 return Response(
-                    {"message": f"User {user.email} has been verified successfully"},
+                    {
+                        "data": {"email": user.email, "is_verified": user.is_verified},
+                        "message": f"User {user.email} has been verified successfully",
+                    },
                     status=status.HTTP_200_OK,
                 )
 
