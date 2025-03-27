@@ -1,9 +1,12 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from '@tanstack/react-router';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+
+import {
+	DefaultFormFileds,
+	RegistrationFormFields,
+	useRegistrationForm,
+} from './useRegistrationForm';
 
 import PasswordInput from '@/components/dummies/PasswordInput';
 import { Button } from '@/components/ui/button';
@@ -20,46 +23,48 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
+	FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import RestriveWrapper from '@/components/wrappers/RestriveWrapper';
 import { Paths } from '@/constants/paths';
 import { cn } from '@/lib/utils';
 
-const FormSchema = z.object({
-	email: z.string().min(2, {
-		message: 'Username must be at least 2 characters.',
-	}),
-	password: z.string().min(8, {
-		message: 'Username must be at least 2 characters.',
-	}),
-});
+type RegistrationFormProps = {
+	className?: string;
+	defaultFormFields?: DefaultFormFileds;
+	handleSubmitRegistrationForm: (data: RegistrationFormFields) => void;
+};
 
 const RegistrationForm = ({
 	className,
-}: React.ComponentPropsWithoutRef<'div'>) => {
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
-		defaultValues: {
-			email: '',
-			password: '',
-		},
+	defaultFormFields,
+	handleSubmitRegistrationForm,
+}: RegistrationFormProps) => {
+	const { form, onSubmit } = useRegistrationForm({
+		defaultFormFields,
+		handleSubmitRegistrationForm,
 	});
 
 	return (
 		<RestriveWrapper>
-			<div className="max-w-lg w-full mx-auto">
-				<div className={cn('flex flex-col gap-6', className)}>
+			<div className={cn('mx-auto w-full max-w-lg', className)}>
+				<div className="flex flex-col gap-6">
 					<Card>
 						<CardHeader>
-							<CardTitle className="text-2xl">Login</CardTitle>
+							<CardTitle className="text-2xl">
+								Login to your account
+							</CardTitle>
 							<CardDescription>
 								Enter your email below to login to your account
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
 							<Form {...form}>
-								<form className="flex flex-col gap-6">
+								<form
+									className="flex flex-col gap-6"
+									onSubmit={form.handleSubmit(onSubmit)}
+								>
 									<FormField
 										control={form.control}
 										name="email"
@@ -74,6 +79,45 @@ const RegistrationForm = ({
 														{...field}
 													/>
 												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name="first_name"
+										render={({ field }) => (
+											<FormItem className="grid gap-2">
+												<FormLabel>
+													First name
+												</FormLabel>
+												<FormControl>
+													<Input
+														placeholder="Input your first name"
+														type="text"
+														required
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name="last_name"
+										render={({ field }) => (
+											<FormItem className="grid gap-2">
+												<FormLabel>Last name</FormLabel>
+												<FormControl>
+													<Input
+														placeholder="Input your last name"
+														type="text"
+														required
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
 											</FormItem>
 										)}
 									/>
@@ -101,6 +145,24 @@ const RegistrationForm = ({
 														{...field}
 													/>
 												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name="password2"
+										render={({ field }) => (
+											<FormItem className="grid gap-2">
+												<FormLabel>Password</FormLabel>
+												<FormControl>
+													<PasswordInput
+														placeholder="Password"
+														required
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
 											</FormItem>
 										)}
 									/>

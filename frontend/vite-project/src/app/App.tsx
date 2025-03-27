@@ -1,4 +1,5 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router';
+import { ToastContainer } from 'react-toastify';
 
 import QueryProvider from './providers/QueryProvider';
 
@@ -16,6 +17,7 @@ export const App = () => {
 	return (
 		<QueryProvider>
 			<RouterProvider router={router} />
+			<ToastContainer />
 		</QueryProvider>
 	);
 };

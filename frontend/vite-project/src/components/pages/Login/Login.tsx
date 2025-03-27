@@ -1,7 +1,18 @@
-import DefaultLayout from '@/components/layouts/DefaultLayout';
+import { useLogin } from './useLogin';
+
+import OneColumnClean from '@/components/layouts/OneColumnClean';
+import LoginForm from '@/components/widgets/LoginForm';
 
 const Login = () => {
-	return <DefaultLayout>Login</DefaultLayout>;
+	const { handleSubmitLoginForm } = useLogin();
+
+	return (
+		<OneColumnClean>
+			<div className="flex h-full flex-col justify-center">
+				<LoginForm handleSubmitLoginForm={handleSubmitLoginForm} />
+			</div>
+		</OneColumnClean>
+	);
 };
 
 export default Login;

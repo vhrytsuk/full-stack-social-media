@@ -9,7 +9,9 @@ type RestriveWrapperProps = {
 
 const RestriveWrapper = ({ children, className }: RestriveWrapperProps) => {
 	return (
-		<div className={clsx('max-w-7xl px-4 md:px-8', className)}>
+		<div
+			className={clsx('max-w-7xl w-full px-4 mx-auto md:px-8', className)}
+		>
 			{children}
 		</div>
 	);

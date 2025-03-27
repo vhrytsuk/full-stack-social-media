@@ -1,25 +1,27 @@
-// import appConfig from 'constants/appConfig';
-// import axios from 'axios';
-// import { decamelizeKeys } from 'humps';
-// import { interceptors } from './interseptors';
+import axios from 'axios';
+import { decamelizeKeys } from 'humps';
 
-// export const http = axios.create({
-// 	baseURL: appConfig.api.baseUrl,
-// 	headers: {
-// 		'Content-Type': 'application/json',
-// 	},
-// });
+import { interceptors } from './interseptors';
 
-// http.interceptors.request.use(async (config) => {
-// 	config.params = decamelizeKeys(config.params);
+import appConfig from '@/constants/appConfig';
+console.log(appConfig.api);
+export const http = axios.create({
+	baseURL: appConfig.api.baseUrl,
+	headers: {
+		'Content-Type': 'application/json',
+	},
+});
 
-// 	if (config.data && config.headers['Content-Type'] === 'application/json') {
-// 		config.data = decamelizeKeys(config.data);
-// 	}
+http.interceptors.request.use(async (config) => {
+	config.params = decamelizeKeys(config.params);
 
-// 	config.headers = Object.assign(config.headers);
+	if (config.data && config.headers['Content-Type'] === 'application/json') {
+		config.data = decamelizeKeys(config.data);
+	}
 
-// 	return config;
-// });
+	config.headers = Object.assign(config.headers);
 
-// http.interceptors.response.use(interceptors.onSuccess, interceptors.onError);
+	return config;
+});
+
+http.interceptors.response.use(interceptors.onSuccess, interceptors.onError);

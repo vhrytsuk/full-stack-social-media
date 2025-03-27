@@ -12,9 +12,9 @@ type PropsType = {
 
 const OneColumnClean = ({ children, className }: PropsType) => {
 	return (
-		<div className={clsx('min-h-full flex flex-col', className)}>
+		<div className={clsx('flex min-h-full flex-col', className)}>
 			<EmptyHeader />
-			<main className="grow">{children}</main>
+			<main className="grid grow">{children}</main>
 			<Footer />
 		</div>
 	);
