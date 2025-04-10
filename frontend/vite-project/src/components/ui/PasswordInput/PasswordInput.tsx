@@ -3,8 +3,8 @@ import { forwardRef, useState } from 'react';
 import { EyeIcon } from '@heroicons/react/24/solid';
 import { EyeSlashIcon } from '@heroicons/react/24/solid';
 
-import { Button } from '@/components/ui/button';
-import { Input, InputProps } from '@/components/ui/input';
+import { Button } from '@/components/ui/Button/button';
+import { Input, InputProps } from '@/components/ui/Input/input';
 import { cn } from '@/lib/utils';
 
 const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
@@ -23,7 +23,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
 					type="button"
 					variant="ghost"
 					size="sm"
-					className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+					className="absolute top-0 right-0 h-full px-3 py-2 hover:bg-transparent"
 					onClick={() => setShowPassword((prev) => !prev)}
 				>
 					{showPassword ? (

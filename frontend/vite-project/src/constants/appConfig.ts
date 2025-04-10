@@ -5,4 +5,3 @@ export default {
 		env: import.meta.env.VITE_NODE_ENV,
 	},
 };
-console.log(import.meta.env);

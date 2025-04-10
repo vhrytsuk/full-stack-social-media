@@ -1,6 +1,7 @@
 import { http } from '@/app/config/axios/http';
 import appConfig from '@/constants/appConfig';
-import { CreateUser, LoginUser } from '@/models/user/api';
+import { ApiError } from '@/models/common/api';
+import { CreateUser, LoginUser, UserTokenValidation } from '@/models/user/api';
 
 const defaultPath = `api/${appConfig.api.version}/auth/`;
 
@@ -26,11 +27,27 @@ export const loginUser = async (data: LoginUser) => {
 
 export const refreshUserToken = async () => {
 	try {
-		const response = await http.post(`${defaultPath}refresh-token/`);
+		const response = await http.post(`${defaultPath}refresh-token/`, {});
 
 		return response.data;
 	} catch (error) {
 		return error;
+	}
+};
+
+export const validateAccessToken = async (): Promise<
+	UserTokenValidation | (ApiError & { accessToken: '' })
+> => {
+	try {
+		const response = await http.get<UserTokenValidation>(
+			`${defaultPath}validate-token/`,
+		);
+
+		return response.data;
+	} catch (error) {
+		const err = error as Error;
+
+		return { accessToken: '', error: err.message };
 	}
 };
 

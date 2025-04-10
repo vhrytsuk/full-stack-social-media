@@ -1,11 +1,17 @@
 import { Link } from '@tanstack/react-router';
 
 import LogoIcon from '@/assets/icons/default-logo.svg?react';
+import { cn } from '@/lib/utils';
 
-const Logo = () => {
+const Logo: React.FC<{ className?: string }> = ({ className }) => {
 	return (
 		<Link to="/">
-			<LogoIcon className="hover:scale-105 transition delay-150 duration-300" />
+			<LogoIcon
+				className={cn(
+					'transition delay-150 duration-300 hover:scale-105',
+					className,
+				)}
+			/>
 		</Link>
 	);
 };

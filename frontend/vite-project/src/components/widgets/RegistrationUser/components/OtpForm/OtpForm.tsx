@@ -2,7 +2,7 @@
 
 import { useOtpForm } from './useOtpForm';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button/button';
 import {
 	Form,
 	FormControl,
@@ -11,12 +11,12 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from '@/components/ui/form';
+} from '@/components/ui/Form/form';
 import {
 	InputOTP,
 	InputOTPGroup,
 	InputOTPSlot,
-} from '@/components/ui/input-otp';
+} from '@/components/ui/InputOtp/input-otp';
 import RestriveWrapper from '@/components/wrappers/RestriveWrapper';
 import { cn } from '@/lib/utils';
 

@@ -8,15 +8,15 @@ import {
 	useRegistrationForm,
 } from './useRegistrationForm';
 
-import PasswordInput from '@/components/dummies/PasswordInput';
-import { Button } from '@/components/ui/button';
+import PasswordInput from '@/components/ui/PasswordInput';
+import { Button } from '@/components/ui/Button/button';
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from '@/components/ui/card';
+} from '@/components/ui/Card/card';
 import {
 	Form,
 	FormControl,
@@ -24,8 +24,8 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+} from '@/components/ui/Form/form';
+import { Input } from '@/components/ui/Input/input';
 import RestriveWrapper from '@/components/wrappers/RestriveWrapper';
 import { Paths } from '@/constants/paths';
 import { cn } from '@/lib/utils';

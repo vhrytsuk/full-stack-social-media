@@ -8,15 +8,14 @@ import {
 	useLoginForm,
 } from './useLoginForm';
 
-import PasswordInput from '@/components/dummies/PasswordInput';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button/button';
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from '@/components/ui/card';
+} from '@/components/ui/Card';
 import {
 	Form,
 	FormControl,
@@ -24,8 +23,9 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+} from '@/components/ui/Form/form';
+import { Input } from '@/components/ui/Input/input';
+import PasswordInput from '@/components/ui/PasswordInput';
 import RestriveWrapper from '@/components/wrappers/RestriveWrapper';
 import { Paths } from '@/constants/paths';
 import { cn } from '@/lib/utils';
@@ -34,12 +34,14 @@ type LoginFormProps = {
 	className?: string;
 	defaultFormFields?: DefaultLoginFormFields;
 	handleSubmitLoginForm: (data: LoginFormFields) => void;
+	submitPending: boolean;
 };
 
 const LoginForm = ({
 	className,
 	defaultFormFields,
 	handleSubmitLoginForm,
+	submitPending,
 }: LoginFormProps) => {
 	const { form, onSubmit } = useLoginForm({
 		defaultFormFields,
@@ -104,6 +106,7 @@ const LoginForm = ({
 										<Button
 											type="submit"
 											className="w-full"
+											disabled={submitPending}
 										>
 											Login
 										</Button>

@@ -18,6 +18,8 @@ export const interceptors = {
 			response.data = camelizeKeys(response.data);
 		}
 
+		//TODO: add corect message validation and displaying
+
 		const message =
 			response.data?.message ||
 			response.data?.detail ||
@@ -25,7 +27,7 @@ export const interceptors = {
 
 		getToastMessage(message, 'success');
 
-		return response.data ? response.data : response;
+		return response;
 	},
 	onError: (error: Error) => {
 		if (isAxiosError(error)) {
@@ -47,6 +49,8 @@ export const interceptors = {
 					'Something went wrong';
 
 				getToastMessage(message, 'error');
+
+				return Promise.reject(error);
 			}
 		}
 		Promise.reject(error);

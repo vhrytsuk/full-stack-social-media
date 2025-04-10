@@ -1,15 +1,11 @@
-import { useLogin } from './useLogin';
-
 import OneColumnClean from '@/components/layouts/OneColumnClean';
-import LoginForm from '@/components/widgets/LoginForm';
+import LoginUser from '@/components/widgets/LoginUser';
 
 const Login = () => {
-	const { handleSubmitLoginForm } = useLogin();
-
 	return (
 		<OneColumnClean>
 			<div className="flex h-full flex-col justify-center">
-				<LoginForm handleSubmitLoginForm={handleSubmitLoginForm} />
+				<LoginUser />
 			</div>
 		</OneColumnClean>
 	);

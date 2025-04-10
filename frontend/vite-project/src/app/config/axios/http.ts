@@ -4,12 +4,13 @@ import { decamelizeKeys } from 'humps';
 import { interceptors } from './interseptors';
 
 import appConfig from '@/constants/appConfig';
-console.log(appConfig.api);
+
 export const http = axios.create({
 	baseURL: appConfig.api.baseUrl,
 	headers: {
 		'Content-Type': 'application/json',
 	},
+	withCredentials: true,
 });
 
 http.interceptors.request.use(async (config) => {

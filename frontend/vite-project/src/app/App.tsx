@@ -1,23 +1,16 @@
-import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { ToastContainer } from 'react-toastify';
 
+import { AuthProvider } from './providers/AuthProvider';
 import QueryProvider from './providers/QueryProvider';
-
-import { routeTree } from '@/routeTree.gen';
-
-const router = createRouter({ routeTree });
-
-declare module '@tanstack/react-router' {
-	interface Register {
-		router: typeof router;
-	}
-}
+import RouteProvider from './providers/RouteProvider';
 
 export const App = () => {
 	return (
-		<QueryProvider>
-			<RouterProvider router={router} />
-			<ToastContainer />
-		</QueryProvider>
+		<AuthProvider>
+			<QueryProvider>
+				<RouteProvider />
+				<ToastContainer />
+			</QueryProvider>
+		</AuthProvider>
 	);
 };

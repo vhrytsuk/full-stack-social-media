@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "accounts",
     "social_accounts",
     "password_reset",
+    "posts",
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -144,8 +148,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.BasicAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ]
 }
@@ -160,6 +164,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:5173",
 ]
+
 
 CORS_ALLOW_HEADERS = (
     "accept",
@@ -178,6 +183,9 @@ CORS_ALLOW_METHODS = (
     "POST",
     "PUT",
 )
+
+CORS_ALLOW_CREDENTIALS = True
+# SESSION_COOKIE_SECURE = True
 
 # Configuration for mailtrap , SMTP server
 EMAIL_HOST = "sandbox.smtp.mailtrap.io"
